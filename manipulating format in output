@@ -1,0 +1,125 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int levels;
+    int pattern;
+    bool validLevelRange = false, validPattern = false;
+   
+   do
+   {
+       cout << "Enter a number 1-4: ";
+       cin >> pattern;
+       if(pattern >= 1 && pattern <= 4)
+            validPattern = true;
+   } while (!validPattern);
+     
+    do
+    {
+        cout << "Enter the number of levels 1-9: ";
+        cin >> levels;
+        
+        if(levels > 0 && levels <= 9)
+            validLevelRange = true;
+
+    } while (!validLevelRange);
+    
+    switch (pattern)
+    {
+    case 1:
+        for(int i = 1; i <= levels; i++)
+        {
+            for(int j = 1; j <= i; j++)        
+                cout << "*";
+            
+            cout << endl;
+        }
+        break;
+    
+    case 2:
+        for(int i = 1; i <= levels; i++)
+        {
+            for(int j = 1; j <= levels-(i-1); j++)    
+                cout << "*";
+            cout << endl;
+        }
+        break;
+
+    case 3:
+        cout << right;
+        for(int i = 1; i <= levels; i++)
+        {
+            cout << setw(i);                            
+            for(int j = 1; j <= levels-(i-1); j++)
+                cout << "*";
+            cout << endl;
+        }
+        break;
+
+    case 4:
+        for(int i = 1; i <= levels; i++)
+        {
+            cout << setw(levels-(i-1));                             
+            for(int j = 1; j <= i; j++)
+                cout << "*";
+            cout << endl;
+        }
+        break;
+    default:
+        cout << "only cases 1 to 4 permitted! end of program! \n";
+    }
+    
+    cout << endl;
+    validPattern = false;
+    validLevelRange = false;
+    do
+   {
+       cout << "Enter 1 or 2: ";
+       cin >> pattern;
+       if(pattern == 1 || pattern == 2)
+            validPattern = true;
+   } while (!validPattern);
+     
+    do
+    {
+        cout << "Enter the number of levels 1-6: ";
+        cin >> levels;
+        
+        if(levels > 0 && levels <= 6)
+            validLevelRange = true;
+
+    } while (!validLevelRange);
+
+    switch (pattern)
+    {
+    case 1 :
+        for(int i = 1; i <= levels; i++)
+        {
+            cout << setw(levels - i) << "";
+            for(int j = 1; j <= 2 * i - 1; j++)
+                cout << "*";
+            cout << endl;
+        }
+        break;
+    case 2:
+        for(int i = 1; i <= levels; i++)
+        {
+            cout << setw(i-1) << "";
+            for(int j = 1; j <= 2 * (levels - i + 1) - 1; j++)
+                cout << "*";
+            cout << endl;
+        }
+    default:
+        cout << "Invalid pattern choice! Only 1 and 2 are allowed!\n";
+        break;
+    }
+    
+
+    cout << endl;
+  
+    
+    
+    return 0;
+};
